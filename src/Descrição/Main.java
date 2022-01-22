@@ -37,6 +37,7 @@ public class Main {
     public static void process(int option) throws Exception {
         switch (option) {
             case 1:
+
                 Scanner scanner = new Scanner(System.in);
 
                 System.out.print("Data: ");
@@ -58,21 +59,26 @@ public class Main {
 
                 Date data = new SimpleDateFormat("dd/MM/yyyy").parse(dia);
 
-                Alunos novoAluno = new Alunos(dia, nome, numero, comparecimento);
+                Alunos novoAluno = new Alunos();
+
+                novoAluno.setDia(data);
+                novoAluno.setNome(nome);
+                novoAluno.setComparecimento(comparecimento);
+                novoAluno.setNumero(numero);
 
                 Lista.addNovoAluno(novoAluno);
 
                 break;
 
             case 2: {
-                List<Alunos> listadeAlunos = lista.getAlunosList();
+                List<Alunos> listadeAlunos = Lista.getAlunosList();
 
-                for (Alunos alunos : listadeAlunos) {
+                for (Alunos aluno : listadeAlunos) {
                     System.out.println("Lista de Presença:");
-                    System.out.println("--- Dia: " + alunos.getDia());
-                    System.out.println("---Nome do Aluno: " + alunos.getNome());
-                    System.out.println("---Número na chamada: " + alunos.getNumero());
-                    System.out.println("---Comparecimento: " + alunos.getComparecimento());
+                    System.out.println("--- Dia: " + aluno.getDia());
+                    System.out.println("---Nome do Aluno: " + aluno.getNome());
+                    System.out.println("---Número na chamada: " + aluno.getNumero());
+                    System.out.println("---Comparecimento: " + aluno.getComparecimento());
                     System.out.println("-----------------------------");
                 }
                 break;
